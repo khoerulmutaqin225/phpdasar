@@ -1,0 +1,9 @@
+database : phpdasar
+tabel	 : mahasiswa
+
+id int primary key auto_inrement (3)
+nama varchar(100)
+nrp varchar (10)
+email (100)
+jurusan varchar(100)
+gambar varchar (100)

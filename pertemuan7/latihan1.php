@@ -12,15 +12,13 @@ $mahasiswa =[
     "gambar" => "Aku.jpg"
     ],
     [
-    "nama" => "sukarno",
+    "nama" => "Silvia Raudha",
     "nrp" => "2008026011",
-    "email" => "soekarno@gmail.com",
-    "jurusan" => "sosiologi",
+    "email" => "silviaraudha@gmail.com",
+    "jurusan" => "Sosiologi Agama",
     "gambar" => "Kamu.jpg"
     ]
     ];
-
-
 
 ?>
 
@@ -33,19 +31,15 @@ $mahasiswa =[
     <title>Document</title>
 </head>
 <body>
-    <h1> Daftar Mahasiswa</h1>
+<ul> 
+<?php  foreach ($mahasiswa as $mhs ) : ?>
+    <li>
+       <a href="latihan2.php?nama=<?= $mhs["nama"]; ?>&nrp=<?= $mhs["nrp"]; ?>&email=<?= $mhs["email"]; ?>&jurusan=<?=
+       $mhs["jurusan"];?>&gambar=<?= $mhs["gambar"]; ?>"> <?= $mhs["nama"]; ?></a>
+    </li> 
 
-    <?php foreach ($mahasiswa as $mhs) :?>
-    <ul>
-        <li>
-            <img src="img/<?= $mhs["gambar"]; ?> ">
-        </li>
-        <li>Nama    : <?php echo $mhs["nama"]; ?></li>
-        <li>NRP     : <?php echo $mhs["nrp"]; ?></li>
-        <li>Jurusan : <?php echo $mhs["jurusan"]; ?></li>
-        <li>Email   : <?php echo $mhs["email"]; ?></li>
-    </ul>
-    <?php endforeach; ?>
+<?php endforeach; ?>
+</ul>        
     
 </body>
 </html>
