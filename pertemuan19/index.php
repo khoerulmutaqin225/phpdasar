@@ -6,28 +6,8 @@ if ( !isset ($_SESSION["login"])) {
 }
 
 require 'functions.php';
-
-// | pagination
-// | Konfigurasi
-$jumlahDataPerHalaman =2;
-$jumlahData = count(query("SELECT *FROM mahasiswa"));
-$jumlahHalaman = ceil($jumlahData /$jumlahDataPerHalaman);
-
-// if (isset ($_GET["halaman"])){
-//     $halamanAktif = $_GET["halaman"];    
-// } else{
-//     $halamanAktif = 1;
-// }
-
-$halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1 ; //Operator ternari pengganti operator atas
-// halaman 2, awal data =2
-$awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
-
-// var_dump($halamanAktif);
-
-// $jumlahData = mysqli_num_rows($result);
 // tampilkan seluruh mahasiswa 
-$mahasiswa = query("SELECT *FROM mahasiswa LIMIT $awalData,$jumlahDataPerHalaman" );
+$mahasiswa = query("SELECT *FROM mahasiswa" );
 
 // Tombol Cari tekan
 if (isset ($_POST["cari"])){
@@ -56,37 +36,16 @@ if (isset ($_POST["cari"])){
 <!-- GET menampilkan data di url -->
 <!-- POST data tidak tampil di url -->
 
-
 <form action="" method="post">
 
     <input type="text" name="keyword" size="30" autofocus 
     placeholder="Masukan keyword pencarian" autocomplete="off" id="keyword">
-
     <button type="submit" name="cari" id="tombol-cari"> Cari!!</button>
+
 </form>
-
-
 <br><br>
-<!-- Navigasi -->
-<?php if($halamanAktif > 1) :?>
-  <a href="?halaman=<?= $halamanAktif-1; ?>">&laquo;</a>
-<?php endif; ?>
-
-<?php for($i =1; $i<= $jumlahHalaman; $i++) : ?>
-    <?php if($i == $halamanAktif) : ?>
-        <a href="?halaman=<?= $i;?>" Style="font-weight: bold; color: red;
-        "><?= $i ?></a>
-    <?php else : ?>
-        <a href="?halaman=<?= $i;?>"><?= $i ?></a>
-    <?php endif; ?>
-<?php endfor; ?>
-
-<?php if($halamanAktif < $jumlahHalaman) :?>
-  <a href="?halaman=<?= $halamanAktif+1; ?>">&raquo;</a>
-<?php endif; ?>
 
 <div id="container">
-
 <table border="1" cellpadding="10" ceelSpacing="0">
 
     <tr>
@@ -105,7 +64,7 @@ if (isset ($_POST["cari"])){
     <tr>
         <td><?= $i; ?></td>
         <td>
-            <a href="ubah.php?id=<?= $row["id"]; ?>">ubah</a> |
+            <a href="ubah.php?id=<?= $row["id"]; ?>">ubah</a> I
             <a href="hapus.php?id=<?= $row["id"]; ?>" onclick="
             return confirm('yakin?');">hapus</a>
         </td>
@@ -117,17 +76,14 @@ if (isset ($_POST["cari"])){
         <td><?= $row["email"] ?></td>
         <td><?= $row["jurusan"]; ?></td>
     </tr>
-    <?php $i++; ?>
+<?php $i++; ?>
 
-    <?php endforeach; ?>
+<?php endforeach; ?>
 
-    </table>
-    </div>
+</table>
+</div>
 
-
-    <script>
-        
-    </script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
