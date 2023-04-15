@@ -19,6 +19,7 @@ $html = '
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/print.css">
 </head>
 <body>
     <h1>Daftar Mahasiswa</h1>
@@ -55,6 +56,8 @@ $html .= ' </table>
 $mpdf->WriteHTML($html);
 
 // Keluar dari libray mpdf
-$mpdf->Output();
+// $mpdf->Output('daftar-mahasiswa.pdf', \Mpdf\Output\Destination::DOWNLOAD);
+// $mpdf->Output('daftar-mahasiswa.pdf', 'D');
+$mpdf->Output('daftar-mahasiswa.pdf', 'I');
 
 ?>
