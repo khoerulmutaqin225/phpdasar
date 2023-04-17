@@ -1,4 +1,5 @@
 <?php
+
 // Memanggil Library 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -6,10 +7,9 @@ require 'functions.php';
 // tampilkan seluruh mahasiswa 
 $mahasiswa = query("SELECT *FROM mahasiswa" );
 
-
-
-//  Memanggl librar Mpdf
+//  Memanggl library Mpdf
 $mpdf = new \Mpdf\Mpdf();
+
 // Buat string html
 $html = '
 <!DOCTYPE html>
@@ -22,7 +22,7 @@ $html = '
     <link rel="stylesheet" href="css/print.css">
 </head>
 <body>
-    <h1>Daftar Mahasiswa</h1>
+    <h1 align="center">Daftar Mahasiswa</h1>
     <table border="1" cellpadding="10" ceelSpacing="0">
 
     <tr>
